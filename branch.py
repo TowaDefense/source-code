@@ -9,26 +9,28 @@ class branch:
         self.right = None
         self.middle = None
 
-    def _init_ (self, name, effect):
+    def _init_ (self, name, effect: effect):
         self.name = name
         self.effect = effect
 
-    def getLeft():
+
+
+    def getLeft(self):
         return self.left
     
-    def getRight():
+    def getRight(self):
         return self.right
 
-    def getMiddle():
+    def getMiddle(self):
         return self.middle
 
-    def getEffect():
-        return this.effect
+    def getEffect(self):
+        return self.effect
     
-    def getName():
+    def getName(self):
         return self.name
     
-    def setEffect(self, description, type, modifier):
+    def setEffect(self, description: str, type: str, modifier):
         self.effect.setDescription(description)
         self.effect.setModifierType(type)
         self.effect.setModifier(modifier)
