@@ -5,6 +5,11 @@ class Player:
     
     maxHp = 100
 
+    def _init_(self):
+        self.health = None
+        self.name = None
+        self.character = None
+
     def _init_(self, health, name, character):
         self.health = health
         self.name = name
@@ -19,7 +24,6 @@ class Player:
             self.health = self.maxHP
         else:
             self. health += regen
-    
     
 
     
