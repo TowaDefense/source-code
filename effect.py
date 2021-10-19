@@ -1,27 +1,59 @@
 
 class effect:
+    class Modifier:
+        
+        #Todo Figure out how we want modifiers to work
 
+        def _init (self):
+            self.type = None
+            self.modifier = None
+        
+        #def getType():
+        #    return self.type
+        
+        #def getModifier():
+        #    return self.modifier
+               
+
+    active = bool(False)
 
 
     def _init_(self):
         self.description = None
-        self.modifierType = None
         self.modifier = None
 
-    def getDescription ():
+
+    
+    def _init_(self, description: str, modifier: Modifier, isActive: bool):
+        self.description = description
+        self.modifier = modifier
+        self.active = isActive
+
+        
+    def getDescription(self):
         return self.description
 
-    def getModifier ():
-        return self.modifier
-    
-    def getModifierType ():
+    def getModifierType (self):
         return self.modifierType
     
-    def setDescription (description):
-        self.description = description
 
-    def setModifierType (ModifierType):
-        self.setModifierType
+    #def setModifierType (self, ModifierType):
+    #    self.setModifierType = modifierType
 
-    def setModifier(modifier):
-        self.modifier = modifier
+    #def setModifier(self, modifier):
+    #    self.modifier = modifier
+    
+    def isActive(self):
+        return self.active
+    
+    def setStatus(self, status: bool):
+        self.active = status
+    
+    def changeStatus(self):
+        self.active = not self.active
+    
+
+
+    
+
+

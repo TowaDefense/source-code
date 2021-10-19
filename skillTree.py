@@ -3,34 +3,49 @@ class skillTree:
 
     activeEffects = []
 
-    def _init_(self):
-        self.branch1 = branch(self, None, None, None, None)
-        self.branch2 = branch(self, None, None, None, None)
-        self.branch3 = branch(self, None, None, None, None)
+    def _init_(self): 
+        self.root1 = branch(self, None, None, None, None)
+        self.root2 = branch(self, None, None, None, None)
+        self.root3 = branch(self, None, None, None, None)
     
     
-    def getAllEffects (self,choice):
+    def getAllEffects (self, choice: int):
         if choice == 1:
-            effectChecker(self.branch1)
+            self.effectChecker(self.root1)
         elif choice == 2:
-            effectChecker(self.branch2)
+            self.effectChecker(self.root2)
         elif choice == 3:
-            effectChecker(self.branch3)
+            self.effectChecker(self.root3)
         else:
             return "error, invalid choice"
 
-    def effectChecker (self,branch):
-        if branch.getRight() == None & branch.getLeft() == None & branch.getMiddle() == None: 
-            self.activeEffects.append(branch.getEffect())
+    def __effectChecker (self,branch: branch):
+        if branch.getRight() == None & branch.getLeft() == None & branch.getMiddle() == None:
+            if (branch.getEffect().isActive()): 
+                self.activeEffects.append(branch.getEffect())
         if branch.getRight() != None:
-            self.activeEffect.append(branch.getRight().getEffect())
-            effectChecker(branch.getRight())
+            if (branch.getEffect().isActive()): 
+                self.activeEffects.append(branch.getEffect())
+                if (branch.getRight().getEffect().isActive()):
+                    self.activeEffect.append(branch.getRight().getEffect())
+                    self.effectChecker(branch.getRight())
         if branch.getLeft() != None:
-            self.activeEffect.append(branch.getLeft().getEffect())
-            effectChecker(branch.getLeft())
+            if branch.getEffect().isActive(): 
+                self.activeEffects.append(branch.getEffect())
+                if branch.getLeft().getEffect().isActive():
+                    self.activeEffects.append(branch.getLeft().getEffect())
+                    self.effectChecker(branch.getLeft())
         if branch.getMiddle() != None:
-            self.activeEffect.append(branch.getMiddle().getEffect())
-            effectChecker(branch.getMiddle())
+            if (branch.getEffect().isActive()): 
+                self.activeEffects.append(branch.getEffect())
+                if (branch.getMiddle().getEffect().isActive()):
+                    self.activeEffects.append(branch.getMiddle().getEffect())
+                    self.effectChecker(branch.getMiddle())
+
+        return self.activeEffects
+
+    
+    
 
             
-
+    
